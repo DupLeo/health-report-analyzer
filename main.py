@@ -10,6 +10,9 @@ import re
 import random
 import time
 
+# variables
+use_model = "llama3"    # modèle téléchargé
+
 # Spécifier le chemin de Tesseract sur Windows
 #pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
@@ -40,7 +43,7 @@ def analyze_with_llama(texte):
         - Un score sur /10 sur le risque de complication pour le patient
     """
     response = ollama.chat(
-        model="llama3",  # modèle que tu as téléchargé
+        model=use_model,
         messages=[{"role": "user", "content": prompt}]
     )
     return response["message"]["content"]

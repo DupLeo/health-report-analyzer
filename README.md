@@ -5,7 +5,10 @@ L’objectif de ce TP est de développer une application capable de lire automat
 ### 1. Installation de OLLAMA, et LLAMA 3
 - RDV sur ce site : https://ollama.com/download pour installer ollama.
 - Lancer l'éxecutable, ou l'installation de ollama (ajouter au PATH Windows si nécessaire)
-- Via une invite de commande, installez et lancer le modèle "LLAMA 3" : ````ollama run llama3````
+- Via une invite de commande, installez et lancer le modèle "LLAMA 3" :
+```bash 
+ollama run llama3
+```
 - Fin de l'installation de la LLM
 
 ### 2. Lancement du programme

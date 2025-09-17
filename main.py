@@ -8,6 +8,7 @@ from reportlab.lib.units import cm
 import os
 import re
 import random
+import time
 
 # Spécifier le chemin de Tesseract sur Windows
 #pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
@@ -85,13 +86,24 @@ if __name__ == "__main__":
 
     # extraction OCR
     print("Extraction OCR...")
+    start = time.perf_counter()
     texte = extract_text_from_image(image_path)
+    ocr_time = time.perf_counter() - start
     print("Fin extraction par l'OCR")
+    print(f"    Time OCR : {ocr_time:.2f} s")
 
     # Analyse par la LLM
     print("Analyse avec la LLM ...")
+    start = time.perf_counter()
     avis = analyze_with_llama(texte)
+    llm_time = time.perf_counter() - start
     print("Fin analyse par la LLM")
+    print(f"    Time Analyse LLM : {llm_time:.2f} s")
 
     # export en PDF
+    start = time.perf_counter()
     export_text(avis)
+    pdf_time = time.perf_counter() - start
+    print(f"    Time Export PDF : {pdf_time:.2f} s")
+
+    print(f"Temps total : {ocr_time + llm_time + pdf_time:.2f} s")
